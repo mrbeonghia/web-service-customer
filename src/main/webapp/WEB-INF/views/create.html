@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Thêm khách hàng</h2>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form method="post" th:object="${customer}">
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td> <input type="text" name="name" th:field="*{name}" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td> <input type="text" name="email" th:field="*{email}" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Số điện thoại:</td>
+            <td> <input type="text" name="phone" th:field="*{phone}" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label >Tỉnh: </label></td>
+            <td><select  id="province"  name="province" th:field="*{province}" >
+                <option th:each="c:${province}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="Thêm khách hàng">
+    <a th:href="@{/}">Thoát</a>
+</form>
+</body>
+</html>
